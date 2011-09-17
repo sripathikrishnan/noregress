@@ -26,6 +26,15 @@
 		<developerConnection>scm:https://github.com/sripathikrishnan/noregress.git</developerConnection>
 		<url>https://github.com/sripathikrishnan/noregress</url>
 	</scm>
+	
+	<developers>
+		<developer>
+			<id>sripathikrishnan</id>
+			<name>Sripathi Krishnan</name>
+			<email>Sripathi.Krishnan@gmail.com</email>
+			<timezone>+5:30</timezone>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>
