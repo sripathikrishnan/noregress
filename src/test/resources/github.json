@@ -1,0 +1,792 @@
+{
+ "kind": "pagespeedonline#result",
+ "id": "https://github.com/",
+ "responseCode": 200,
+ "title": "Secure source code hosting and collaborative development - GitHub",
+ "score": 84,
+ "pageStats": {
+  "numberResources": 34,
+  "numberHosts": 5,
+  "totalRequestBytes": "3461",
+  "numberStaticResources": 30,
+  "htmlResponseBytes": "20253",
+  "cssResponseBytes": "366447",
+  "imageResponseBytes": "154307",
+  "javascriptResponseBytes": "415371",
+  "otherResponseBytes": "583",
+  "numberJsResources": 4,
+  "numberCssResources": 1
+ },
+ "formattedResults": {
+  "locale": "en_US",
+  "ruleResults": {
+   "AvoidBadRequests": {
+    "localizedRuleName": "Avoid bad requests",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "AvoidCssImport": {
+    "localizedRuleName": "Avoid CSS @import",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "AvoidExcessSerialization": {
+    "localizedRuleName": "Reduce request serialization",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "AvoidLongRunningScripts": {
+    "localizedRuleName": "Avoid long-running scripts",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "DeferParsingJavaScript": {
+    "localizedRuleName": "Defer parsing of JavaScript",
+    "ruleScore": 48,
+    "ruleImpact": 3.1542000000000003,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "$1 of JavaScript is parsed during initial page load. Defer parsing JavaScript to reduce blocking of page rendering.",
+       "args": [
+        {
+         "type": "BYTES",
+         "value": "308KiB"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "$1 ($2)",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/javascripts/bundle_github.js?3d8e5a21efe0046b8978a554935a795d74e62b2d"
+          },
+          {
+           "type": "BYTES",
+           "value": "225KiB"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1 ($2)",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/javascripts/jquery/jquery-1.6.1.min.js"
+          },
+          {
+           "type": "BYTES",
+           "value": "82.4KiB"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1 ($2 of inline JavaScript)",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://github.com/"
+          },
+          {
+           "type": "BYTES",
+           "value": "712B"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "EliminateUnnecessaryReflows": {
+    "localizedRuleName": "Eliminate unnecessary reflows",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "EnableGzipCompression": {
+    "localizedRuleName": "Enable compression",
+    "ruleScore": 87,
+    "ruleImpact": 6.7263,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Compressing the following resources with gzip could reduce their transfer size by $1 ($2 reduction).",
+       "args": [
+        {
+         "type": "BYTES",
+         "value": "65.7KiB"
+        },
+        {
+         "type": "PERCENTAGE",
+         "value": "69%"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "Compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/blacktocat.svg"
+          },
+          {
+           "type": "BYTES",
+           "value": "20.5KiB"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "66%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6-hover.svg"
+          },
+          {
+           "type": "BYTES",
+           "value": "19.5KiB"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "81%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6.svg"
+          },
+          {
+           "type": "BYTES",
+           "value": "14.2KiB"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "77%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/footer-logo.svg"
+          },
+          {
+           "type": "BYTES",
+           "value": "11.5KiB"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "54%"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "InlineSmallCss": {
+    "localizedRuleName": "Inline Small CSS",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "InlineSmallJavaScript": {
+    "localizedRuleName": "Inline Small JavaScript",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "LeverageBrowserCaching": {
+    "localizedRuleName": "Leverage browser caching",
+    "ruleScore": 96,
+    "ruleImpact": 0.49404761904761907,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "The following cacheable resources have a short freshness lifetime. Specify an expiration at least one week in the future for the following resources:"
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "$1 ($2)",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://ssl.google-analytics.com/ga.js"
+          },
+          {
+           "type": "DURATION",
+           "value": "2 hours"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "MakeLandingPageRedirectsCacheable": {
+    "localizedRuleName": "Make landing page redirects cacheable",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "MinifyCss": {
+    "localizedRuleName": "Minify CSS",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "MinifyHTML": {
+    "localizedRuleName": "Minify HTML",
+    "ruleScore": 95,
+    "ruleImpact": 0.057,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Minifying the following HTML resources could reduce their size by $1 ($2 reduction).",
+       "args": [
+        {
+         "type": "BYTES",
+         "value": "570B"
+        },
+        {
+         "type": "PERCENTAGE",
+         "value": "3%"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "Minifying $1 could save $2 ($3 reduction) after compression.",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://github.com/"
+          },
+          {
+           "type": "BYTES",
+           "value": "570B"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "3%"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "MinifyJavaScript": {
+    "localizedRuleName": "Minify JavaScript",
+    "ruleScore": 99,
+    "ruleImpact": 0.0737,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Minifying the following JavaScript resources could reduce their size by $1 ($2 reduction).",
+       "args": [
+        {
+         "type": "BYTES",
+         "value": "425B"
+        },
+        {
+         "type": "PERCENTAGE",
+         "value": "6%"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "Minifying $1 could save $2 ($3 reduction) after compression.",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://d1ros97qkrwjf5.cloudfront.net/19/eum/rum.js"
+          },
+          {
+           "type": "BYTES",
+           "value": "425B"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "6%"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "MinimizeRedirects": {
+    "localizedRuleName": "Minimize redirects",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "MinimizeRequestSize": {
+    "localizedRuleName": "Minimize request size",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "OptimizeImages": {
+    "localizedRuleName": "Optimize images",
+    "ruleScore": 84,
+    "ruleImpact": 0.7733,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Optimizing the following images could reduce their size by $1 ($2 reduction).",
+       "args": [
+        {
+         "type": "BYTES",
+         "value": "6.8KiB"
+        },
+        {
+         "type": "PERCENTAGE",
+         "value": "40%"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "Losslessly compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6.png"
+          },
+          {
+           "type": "BYTES",
+           "value": "3.6KiB"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "40%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Losslessly compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/logos/twitter.png"
+          },
+          {
+           "type": "BYTES",
+           "value": "1.2KiB"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "32%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Losslessly compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/bg_footer_bottom.png"
+          },
+          {
+           "type": "BYTES",
+           "value": "858B"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "92%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Losslessly compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/bg_footer_top.png"
+          },
+          {
+           "type": "BYTES",
+           "value": "858B"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "92%"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "Losslessly compressing $1 could save $2 ($3 reduction).",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/logos/facebook.png"
+          },
+          {
+           "type": "BYTES",
+           "value": "375B"
+          },
+          {
+           "type": "PERCENTAGE",
+           "value": "15%"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "OptimizeTheOrderOfStylesAndScripts": {
+    "localizedRuleName": "Optimize the order of styles and scripts",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "PreferAsyncResources": {
+    "localizedRuleName": "Prefer asynchronous resources",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "PutCssInTheDocumentHead": {
+    "localizedRuleName": "Put CSS in the document head",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "RemoveQueryStringsFromStaticResources": {
+    "localizedRuleName": "Remove query strings from static resources",
+    "ruleScore": 86,
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "Resources with a \"?\" in the URL are not cached by some proxy caching servers.  Remove the query string and encode the parameters into the URL for the following resources:"
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/rackspace_logo.png?v2"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/logos/rackspace.png?v2"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/javascripts/bundle_github.js?3d8e5a21efe0046b8978a554935a795d74e62b2d"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/stylesheets/bundle_github.css?79be0abb50c19db4d326f614c301c166fc433ea0"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "ServeResourcesFromAConsistentUrl": {
+    "localizedRuleName": "Serve resources from a consistent URL",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "ServeScaledImages": {
+    "localizedRuleName": "Serve scaled images",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "SpecifyACacheValidator": {
+    "localizedRuleName": "Specify a cache validator",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "SpecifyAVaryAcceptEncodingHeader": {
+    "localizedRuleName": "Specify a Vary: Accept-Encoding header",
+    "ruleScore": 86,
+    "ruleImpact": 0.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "The following publicly cacheable, compressible resources should have a \"Vary: Accept-Encoding\" header:"
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/blacktocat.svg"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/footer-logo.svg"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6-hover.svg"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6.svg"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "SpecifyCharsetEarly": {
+    "localizedRuleName": "Specify a character set",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "SpecifyImageDimensions": {
+    "localizedRuleName": "Specify image dimensions",
+    "ruleScore": 100,
+    "ruleImpact": 0.0
+   },
+   "SpriteImages": {
+    "localizedRuleName": "Combine images into CSS sprites",
+    "ruleScore": 0,
+    "ruleImpact": 11.0,
+    "urlBlocks": [
+     {
+      "header": {
+       "format": "The following images served from $1 should be combined into as few images as possible using CSS sprites.",
+       "args": [
+        {
+         "type": "STRING_LITERAL",
+         "value": "akamai.net"
+        }
+       ]
+      },
+      "urls": [
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/ajax/indicator.gif"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/bg_footer_bottom.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/bg_footer_top.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/footer/rackspace_logo.png?v2"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/background-v2.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/header/nav-rule.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/hero/textographic-border.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/curly-rule-down.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/curly-rule.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/logos/digg.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/logos/emi.png"
+          }
+         ]
+        }
+       },
+       {
+        "result": {
+         "format": "$1",
+         "args": [
+          {
+           "type": "URL",
+           "value": "https://a248.e.akamai.net/assets.github.com/images/modules/home/search_icon.png"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "version": {
+  "major": 1,
+  "minor": 12
+ }
+}
+
