@@ -4,13 +4,29 @@
 	<groupId>org.noregress</groupId>
 	<artifactId>noregress</artifactId>
 	<version>0.1.1</version>
+	<packaging>jar</packaging>
 	<name>No Performance Regression</name>
 	<description>Java Library for Performance Regression Tests</description>
+	<url>https://github.com/sripathikrishnan/noregress</url>
 	
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>https://github.com/sripathikrishnan/noregress/blob/master/LICENSE.txt</url>
+		</license>
+	</licenses>
+	
+	<scm>
+		<connection>scm:https://github.com/sripathikrishnan/noregress.git</connection>
+		<developerConnection>scm:https://github.com/sripathikrishnan/noregress.git</developerConnection>
+		<url>https://github.com/sripathikrishnan/noregress</url>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
