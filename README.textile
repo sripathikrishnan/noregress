@@ -4,20 +4,14 @@ Noregress lets you write simple junit tests to ensure your websites' performance
 
 Noregress uses "Google PageSpeed Online API":http://code.google.com/apis/pagespeedonline/v1/reference.html. You will need to register with Google and obtain a (free) API key before using Noregress.
 
-h2. How it works
-
-# Noregress makes calls Google Page Speed Online API with the URL of your website 
-# Google's servers make a request to your website and analyse the performance
-# Noregress parses the result and provides a convenient API to assert the performance
-
 h2. Using Noregress
 
-h3. Step 1 : Getting Google Page Speed API Key
+h3. Step 1 : Get an API key from Google
 
-* To acquire an API key, visit the "Google APIs Console":https://code.google.com/apis/console. In the Services pane, activate the Page Speed Online API; if the Terms of Service appear, read and accept them
+* Visit "Google's API Console":https://code.google.com/apis/console. In the Services pane, activate Page Speed Online API; if the Terms of Service appear, read and accept them
 * Next, go to the "API Access pane":https://code.google.com/apis/console#access. The API key is near the bottom of that pane, in the section titled "Simple API Access." 
 
-You will need the API key when you write your test cases in Step 3
+Consult "Google's API Console Help":http://code.google.com/apis/console-help/#WhatIsKey if you need more information.
 
 h3. Step 2 : Download Noregress Library
 
@@ -75,12 +69,27 @@ assertTrue("Poor cache headers on static resources", result.getScoreFor(Rule.Lev
 </code>
 </pre>
 
+h2. How does Noregress work?
+
+# Noregress makes a call to Google Page Speed Online API with the URL of your website 
+# Google's servers make a request to your website, analyse the performance and return a JSON result
+# Noregress parses the result and provides a convenient API to assert there are no regressions 
+
+Noregress can be made to work against WebPageTest.org 's REST API. That's a TODO. See Issue #1
+
+h2. Best Practices
+
+# Use Noregress as part of your integration tests. Its a great idea to run these tests along with your Selenium tests
+# Make lots of small "actionable assertions", instead of one big assertion. For example, asserting the overall page score will catch all regressions, but you won't know what change caused that regression. Instead, checking for something like "Number of JS resources on a page" will tell you exactly what broke the test and how to fix it.
+# You have a limit of 250 requests a day. Assuming you do 10 commits per day, you can test 25 pages on your website. Choose wisely!
+
+
 h2. Anything else I should know?
 
-* This library wraps Google's API. You should read and comply with their terms and conditions
-** Specifically, there is a limit of 250 requests per day
-* When Issue #1 is complete, Noregress can optionally work against the "API provided by WebPageTest.org":https://sites.google.com/a/webpagetest.org/docs/advanced-features/webpagetest-restful-apis
-
+# This library wraps Google's API, so you should read and comply with their terms and conditions 
+# You can only test 250 pages per day. This limit is set by Google's Page Speed API 
+# The pages need to be accessible over public internet. You cannot use this library behind the firewall
+# You cannot use this library for password protected pages
 
 h2. License
 
@@ -88,5 +97,5 @@ Noregress is licensed under the MIT License
 
 h2. Author
 
-Sripathi Krishnan - Sripathi.Krishnan@gmail.com
-
+Sripathi Krishnan
+Email : <FirstName> <dot> <LastName> at gmail.com
