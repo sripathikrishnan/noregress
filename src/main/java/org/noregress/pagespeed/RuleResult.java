@@ -1,5 +1,10 @@
 package org.noregress.pagespeed;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,12 +14,25 @@ class RuleResult implements Comparable<RuleResult> {
 	private final String localizedRuleName;
 	private final int ruleScore;
 	private final double ruleImpact;
+	private final List<UrlBlock> urlBlocks;
 
 	RuleResult(String id, JSONObject json) throws JSONException {
 		this.id = id;
 		this.localizedRuleName = json.getString("localizedRuleName");
 		this.ruleScore = json.getInt("ruleScore");
 		this.ruleImpact = json.getDouble("ruleImpact");
+		
+		List<UrlBlock> tempUrlBlocks = new ArrayList<UrlBlock>();
+		
+		if(json.has("urlBlocks")) {
+			JSONArray rawUrlBlocks = json.getJSONArray("urlBlocks");
+			for(int i=0; i<rawUrlBlocks.length(); i++) {
+				JSONObject obj = rawUrlBlocks.getJSONObject(i);
+				tempUrlBlocks.add(new UrlBlock(obj));
+			}
+		}
+		this.urlBlocks = Collections.unmodifiableList(tempUrlBlocks);
+		
 	}
 
 	public int compareTo(RuleResult other) {
@@ -88,7 +106,7 @@ class RuleResult implements Comparable<RuleResult> {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	String getId() {
 		return id;
 	}
 
@@ -96,7 +114,7 @@ class RuleResult implements Comparable<RuleResult> {
 	/**
 	 * @return the localizedRuleName
 	 */
-	public String getLocalizedRuleName() {
+	String getLocalizedRuleName() {
 		return localizedRuleName;
 	}
 
@@ -104,7 +122,7 @@ class RuleResult implements Comparable<RuleResult> {
 	/**
 	 * @return the ruleScore
 	 */
-	public int getRuleScore() {
+	int getRuleScore() {
 		return ruleScore;
 	}
 
@@ -112,7 +130,14 @@ class RuleResult implements Comparable<RuleResult> {
 	/**
 	 * @return the ruleImpact
 	 */
-	public double getRuleImpact() {
+	double getRuleImpact() {
 		return ruleImpact;
+	}
+
+	/**
+	 * @return the urlBlocks
+	 */
+	List<UrlBlock> getUrlBlocks() {
+		return urlBlocks;
 	}
 }

@@ -51,5 +51,8 @@ public class ParserTest {
 		assertEquals("Defer parsing of JavaScript", deferParsingJavaScript.getLocalizedRuleName());
 		assertEquals(48, deferParsingJavaScript.getRuleScore());
 		assertEquals(3.1542d, deferParsingJavaScript.getRuleImpact(), 0.1d);
+		
+		assertEquals(1, deferParsingJavaScript.getUrlBlocks().size());
+		assertEquals(3, deferParsingJavaScript.getUrlBlocks().get(0).getUrls().size());
 	}
 }

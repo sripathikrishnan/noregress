@@ -5,37 +5,15 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import org.noregress.PageTester;
 import org.noregress.Request;
-import org.noregress.Result;
-import org.noregress.Rule;
 
 import static junit.framework.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 
-public class PageSpeedTest {
+public class PageSpeedOnlineV1ServiceTest {
 
-	@Ignore @Test
-	public void testGithubUsingLiveService() {
-		PageTester client = new PageSpeedOnlineV1Service("<YOUR-PAGE-SPEED-API-KEY>");
-		Result result = client.testPage(new Request("http://github.com"));
-		
-		assertEquals("Http Response Code", 200, result.getResponseCode());
-		assertTrue("Overall page score below threshold", result.getOverallScore() > 80);
-		assertTrue("Too many resources on page", result.getNumberResources() < 35);
-		assertTrue("Too many JS resources on page", result.getNumberJsResources() < 5);
-		assertEquals("404's on page", 100, result.getScoreFor(Rule.AvoidBadRequests));
-		assertTrue("Poor cache headers on external resources", result.getScoreFor(Rule.LeverageBrowserCaching) > 95);
-		assertTrue("Minify Javascript", result.getScoreFor(Rule.MinifyJavaScript) > 95);
-		assertEquals("Same image/css/js served from different URLs", 100, result.getScoreFor(Rule.ServeResourcesFromAConsistentUrl));
-		assertEquals("Images are being scaled in html/css", 100, result.getScoreFor(Rule.ServeScaledImages));
-		
-		//assertTrue("Sprite Images, or use data:uri", result.getScoreFor(Rule.SpriteImages) > 80);
-	}
-	
 	@Test
 	public void testHomePage() {
 		PageSpeedOnlineV1Service client = new PageSpeedOnlineV1Service("dummykey") {
@@ -44,15 +22,16 @@ public class PageSpeedTest {
 			}
 		};
 		
-		Result result = client.testPage(new Request("http://github.com"));
+		PageSpeedResult result = client.testPage(new Request("http://github.com"));
+		
 		assertEquals("Http Response Code", 200, result.getResponseCode());
-		assertEquals("Overall Score", 84, result.getOverallScore());
 		assertEquals("Number of Resources", 34, result.getNumberResources());
 		assertEquals("Number of JS Resources", 5, result.getNumberHosts());
 		
-		assertEquals(48, result.getScoreFor(Rule.DeferParsingJavaScript));
-		assertEquals(3.154, result.getImpactFor(Rule.DeferParsingJavaScript), 0.1d);
-		
+		assertTrue("404s", result.getBadRequests().isEmpty());
+		assertTrue("Including CSS files via @import", result.getCssIncludedViaImportDeclaration().isEmpty());
+		assertTrue("Long Running Scripts", result.getLongRunningScripts().isEmpty());
+		assertEquals("Scripts parsed at page load", 3, result.getScriptsParsedAtPageLoad().size());
 	}
 	
 	@Test
@@ -81,5 +60,4 @@ public class PageSpeedTest {
 				service.getServiceUrl(requestWithMobileStrategy).toExternalForm());
 		
 	}
-
 }

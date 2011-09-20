@@ -1,9 +1,14 @@
 package org.noregress.pagespeed;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import org.noregress.Rule;
+import org.noregress.pagespeed.Rule;
 import org.noregress.Result;
 
 
@@ -12,7 +17,9 @@ class PageSpeedResult implements Result {
 	private final String id;
 	private final int responseCode;
 	private final String title;
+	
 	private final int score;
+	
 	private final PageStats pageStats;
 	private final FormattedResults formattedResults; 
 	private final Version version;
@@ -50,11 +57,7 @@ class PageSpeedResult implements Result {
 	public int getResponseCode() {
 		return responseCode;
 	}
-
-	public int getOverallScore() {
-		return score;
-	}
-
+	
 	public int getNumberResources() {
 		return pageStats.getNumberResources();
 	}
@@ -98,15 +101,27 @@ class PageSpeedResult implements Result {
 	public int getNumberCssResources() {
 		return pageStats.getNumberCssResources();
 	}
-	
-	public int getScoreFor(Rule rule) {
-		return findRule(rule).getRuleScore();
+
+	public List<URI> getBadRequests() {
+		RuleResult rule = findRule(Rule.AvoidBadRequests);
+		return getListOfURI(rule.getUrlBlocks());
 	}
-	
-	public double getImpactFor(Rule rule) {
-		return findRule(rule).getRuleImpact();
+
+	public List<URI> getCssIncludedViaImportDeclaration() {
+		RuleResult rule = findRule(Rule.AvoidCssImport);
+		return getListOfURI(rule.getUrlBlocks());
 	}
-	
+
+	public List<URI> getLongRunningScripts() {
+		RuleResult rule = findRule(Rule.AvoidLongRunningScripts);
+		return getListOfURI(rule.getUrlBlocks());
+	}
+
+	public List<URI> getScriptsParsedAtPageLoad() {
+		RuleResult rule = findRule(Rule.DeferParsingJavaScript);
+		return getListOfURI(rule.getUrlBlocks());
+	}
+
 	private RuleResult findRule(Rule rule) {
 		RuleResult ruleResult = formattedResults.getRuleResults().get(rule.name());
 		if(ruleResult == null) {
@@ -114,4 +129,40 @@ class PageSpeedResult implements Result {
 		}
 		return ruleResult;
 	}
+	
+	private List<URI> getListOfURI(List<UrlBlock> urlBlocks) {
+		List<URI> uris = new ArrayList<URI>();
+		
+		if(!urlBlocks.isEmpty()) {
+			//Haven't seen multiple UrlBlocks even through the schema allows it
+			UrlBlock urlblock = urlBlocks.get(0);
+			
+			for(FormattedMessage message : urlblock.getUrls()) {
+				uris.add(getURI(message));
+			}
+		}
+		
+		return uris;
+	}
+
+	private URI getURI(FormattedMessage message) {
+		
+		for(Argument arg : message.getArgs()) {
+			if(arg.getType().equals(ArgumentType.URL)) {
+				try {
+					return new URI(arg.getValue());
+				}
+				catch (URISyntaxException e) {
+					throw new IllegalArgumentException(e);
+				}
+			}
+		}
+		
+		throw new IllegalArgumentException("Could not find a URI in the formatted message " + message);
+	}
+
+	public int getOverallScore() {
+		return score;
+	}
+
 }

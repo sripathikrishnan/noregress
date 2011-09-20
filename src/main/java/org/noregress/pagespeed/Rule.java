@@ -1,6 +1,6 @@
-package org.noregress;
+package org.noregress.pagespeed;
 
-public enum Rule {
+enum Rule {
 
 	AvoidBadRequests,
 	AvoidCssImport,
