@@ -121,7 +121,21 @@ class PageSpeedResult implements Result {
 		RuleResult rule = findRule(Rule.DeferParsingJavaScript);
 		return getListOfURI(rule.getUrlBlocks());
 	}
-
+	
+	public List<URI> getResourcesWithoutCompression() {
+		RuleResult rule = findRule(Rule.EnableGzipCompression);
+		return getListOfURI(rule.getUrlBlocks());
+	}
+	
+	public List<URI> getResourcesWithShortExpiry() {
+		RuleResult rule = findRule(Rule.LeverageBrowserCaching);
+		return getListOfURI(rule.getUrlBlocks());
+	}
+		
+	public int getOverallScore() {
+		return score;
+	}
+	
 	private RuleResult findRule(Rule rule) {
 		RuleResult ruleResult = formattedResults.getRuleResults().get(rule.name());
 		if(ruleResult == null) {
@@ -160,9 +174,4 @@ class PageSpeedResult implements Result {
 		
 		throw new IllegalArgumentException("Could not find a URI in the formatted message " + message);
 	}
-
-	public int getOverallScore() {
-		return score;
-	}
-
 }

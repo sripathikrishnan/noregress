@@ -110,4 +110,9 @@ public interface Result {
 	List<URI> getLongRunningScripts();
 	
 	List<URI> getScriptsParsedAtPageLoad();
+	
+	List<URI> getResourcesWithoutCompression();
+	
+	List<URI> getResourcesWithShortExpiry();
+	
 }
