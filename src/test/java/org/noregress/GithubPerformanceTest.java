@@ -14,7 +14,7 @@ public class GithubPerformanceTest {
 
 	@Test
 	public void testGithubHomePageInAnonymousMode() {
-		PageTester tester = new PageSpeedOnlineV1Service("AIzaSyBIjvt1lF044ashrckbSrifgTXGIpnnDO0");
+		PageTester tester = new PageSpeedOnlineV1Service("<INSERT-PAGE-SPEED-API-KEY>");
 		Result result = tester.testPage(new Request("http://github.com/"));
 		
 		/*
