@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class PageSpeedOnlineV1ServiceTest {
-
+	
 	@Test
 	public void testHomePage() {
 		PageSpeedOnlineV1Service client = new PageSpeedOnlineV1Service("dummykey") {

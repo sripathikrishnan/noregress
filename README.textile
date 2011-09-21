@@ -19,12 +19,14 @@ For maven users :
 
 <pre>
 <code>
-	<dependency>
-		<groupId>org.noregress</groupId>
-		<artifactId>noregress</artifactId>
-		<version>0.1.1</version>
-		<scope>test</scope>
-	</dependency>
+
+<dependency>
+	<groupId>org.noregress</groupId>
+	<artifactId>noregress</artifactId>
+	<version>0.1.1</version>
+	<scope>test</scope>
+</dependency>
+
 </code>
 </pre>
 
@@ -34,38 +36,40 @@ h3. Step 3 : Writing Test Cases
 
 <pre>
 <code>
-PageTester client = new PageSpeedOnlineV1Service("<YOUR-PAGE-SPEED-API-KEY>");
-Result result = client.testPage(new Request("http://example.com"));
+@Test
+public void testGithubHomePageInAnonymousMode() {
+	PageTester tester = new PageSpeedOnlineV1Service("AIzaSyBIjvt1lF044ashrckbSrifgTXGIpnnDO0");
+	Result result = tester.testPage(new Request("http://github.com/"));
+	
+	/*
+	 * Basic Assertions
+	 */
+	assertEquals("Http Response Code", 200, result.getResponseCode());
+	assertEquals("404's on page", 0, result.getBadRequests().size());
+	assertTrue("Too many domains used on the page", result.getNumberHosts() < 6);
+	
+	/*
+	 * If somebody adds a new image or a new css/js file, these tests will catch them
+	 */
+	assertTrue("Too many resources on page", result.getNumberResources() < 35);
+	assertTrue("Too many JS resources on page", result.getNumberJsResources() < 5);
+	assertTrue("Too many CSS resources on page", result.getNumberCssResources() < 2);
+	
+	
+	/*
+	 * Github doesn't compress SVG files, when they should.
+	 * But just to demonstrate the flexibility of Noregress, 
+	 * we will ignore svg files as part of this test 
+	 */
+	List<URI> resourcesWithoutGzip = result.getResourcesWithoutCompression();
+	List<URI> filteredResources = ignoreURIPatterns(resourcesWithoutGzip, "^.*svg$");
+	assertTrue("GZip not enabled on some ", filteredResources.isEmpty());
 
-/*
- * Basic Assertions
- */
-assertEquals("Http Response Code", 200, result.getResponseCode());
-assertEquals("404's on page", 100, result.getScoreFor(Rule.AvoidBadRequests));
-assertEquals("Same image/css/js served from different URLs", 100, result.getScoreFor(Rule.ServeResourcesFromAConsistentUrl));
-
-
-/*
- * The overall page score as determined by Page Speed
- * If it fails, you will not know what caused the failure, so use it with caution
- */
-assertTrue("Overall page score below threshold", result.getOverallScore() > 80);
-
-/*
- * If somebody adds a new image or a new css/js file, these tests will catch them
- */
-assertTrue("Too many resources on page", result.getNumberResources() < 35);
-assertTrue("Too many JS resources on page", result.getNumberJsResources() < 5);
-
-/*
- * If you are missing cache headers..
- */
-assertTrue("Poor cache headers on static resources", result.getScoreFor(Rule.LeverageBrowserCaching) > 95);
-
-/*
- * Several other tests possible - check javadocs for more information
- */
-
+	/*
+	 * Several other assertions are possible. 
+	 * Look at org.noregress.Result and org.noregress.pagespeed.PageSpeedResult
+	 */
+}
 </code>
 </pre>
 
@@ -98,4 +102,4 @@ Noregress is licensed under the MIT License
 h2. Author
 
 Sripathi Krishnan
-Email : <FirstName> <dot> <LastName> at gmail.com
+Email : &lt;FirstName&gt;&lt;dot&gt;&lt;LastName&gt; at gmail.com

@@ -19,10 +19,12 @@ class UrlBlock {
 		
 		List<FormattedMessage> tempUrls = new ArrayList<FormattedMessage>();
 		
-		JSONArray rawUrls = json.getJSONArray("urls");
-		for(int i=0; i<rawUrls.length(); i++) {
-			JSONObject obj = rawUrls.getJSONObject(i);
-			tempUrls.add(new FormattedMessage(obj.getJSONObject("result")));
+		if(json.has("urls")) {
+			JSONArray rawUrls = json.getJSONArray("urls");
+			for(int i=0; i<rawUrls.length(); i++) {
+				JSONObject obj = rawUrls.getJSONObject(i);
+				tempUrls.add(new FormattedMessage(obj.getJSONObject("result")));
+			}
 		}
 		this.urls = Collections.unmodifiableList(tempUrls);
 	
