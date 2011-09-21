@@ -18,12 +18,14 @@ h3. Step 2 : Download Noregress Library
 For maven users :
 <pre>
 <code>
+
 <dependency>
 	<groupId>org.noregress</groupId>
 	<artifactId>noregress</artifactId>
 	<version>0.2.0</version>
 	<scope>test</scope>
 </dependency>
+
 </code>
 </pre>
 
