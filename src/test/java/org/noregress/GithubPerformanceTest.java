@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.noregress.pagespeed.PageSpeedOnlineV1Service;
 
@@ -12,7 +13,7 @@ import static junit.framework.Assert.*;
 
 public class GithubPerformanceTest {
 
-	@Test
+	@Ignore @Test
 	public void testGithubHomePageInAnonymousMode() {
 		PageTester tester = new PageSpeedOnlineV1Service("<INSERT-PAGE-SPEED-API-KEY>");
 		Result result = tester.testPage(new Request("http://github.com/"));
