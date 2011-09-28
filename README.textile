@@ -28,9 +28,11 @@ For maven users :
 </code>
 </pre>
 
-If you don't use maven, "download the jar from sonatype repository":https://oss.sonatype.org/content/repositories/releases/org/noregress/noregress/ Noregress-x.y.z.jar is self-contained and does not have any external dependencies.
+If you don't use maven, "download the jar from sonatype repository":https://oss.sonatype.org/content/repositories/releases/org/noregress/noregress/. Noregress-x.y.z.jar is self-contained and does not have any external dependencies.
 
 h3. Step 3 : Writing Test Cases
+
+See "GithubPerformanceTest":https://github.com/sripathikrishnan/noregress/blob/master/src/test/java/org/noregress/GithubPerformanceTest.java for a complete example. An excerpt is shown below.
 
 <pre>
 <code>
