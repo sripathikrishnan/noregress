@@ -6,7 +6,7 @@ Noregress uses "Google PageSpeed Online API":http://code.google.com/apis/pagespe
 
 h2. Using Noregress
 
-h3. Step 1 : Get an API key from Google
+h3. Step 1 : Get a Free API key from Google
 
 * Visit "Google's API Console":https://code.google.com/apis/console. In the Services pane, activate Page Speed Online API; if the Terms of Service appear, read and accept them
 * Next, go to the "API Access pane":https://code.google.com/apis/console#access. The API key is near the bottom of that pane, in the section titled "Simple API Access." 
