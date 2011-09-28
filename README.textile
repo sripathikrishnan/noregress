@@ -1,4 +1,4 @@
-h1. Noregress – Regression tests for website performance 
+h1. Regression Test Library to Assert Web Performance 
 
 Noregress lets you write junit tests to verify your websites performance does not degreade over time.
 
@@ -28,7 +28,7 @@ For maven users :
 </code>
 </pre>
 
-If you don't use maven, "download the jar from sonatype repository":https://oss.sonatype.org/content/repositories/releases/org/noregress/noregress/
+If you don't use maven, "download the jar from sonatype repository":https://oss.sonatype.org/content/repositories/releases/org/noregress/noregress/ Noregress-x.y.z.jar is self-contained and does not have any external dependencies.
 
 h3. Step 3 : Writing Test Cases
 
