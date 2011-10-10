@@ -1,6 +1,6 @@
 h1. Regression Test Library to Assert Web Performance 
 
-Noregress lets you write junit tests to verify your websites performance does not degreade over time.
+Noregress lets you write junit tests to verify your websites performance does not degrade over time.
 
 Noregress uses "Google PageSpeed Online API":http://code.google.com/apis/pagespeedonline/v1/reference.html. You will need to register with Google and obtain a (free) API key.
 
