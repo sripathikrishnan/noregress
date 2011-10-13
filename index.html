@@ -1,38 +1,104 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Noregress - Regression Tests For Web Performance</title>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
-<link rel="stylesheet" href="css/docs.css">
-<link rel="stylesheet" href="css/prettify.css">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Assert Web Performance - Noregress</title>
+    <meta name="description" content="Assert Web Performance using Page Speed">
+    <meta name="author" content="Sripathi Krishnan">
 
-</head>
-<body>
-    <div class="topbar" >
-      <div class="topbar-inner">
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+    <link rel="stylesheet" href="css/prettify.css">
+
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="js/prettify.js"></script>
+    
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+      .key-features {
+      	background-color : #F5F5F5;
+      	border-radius : 5px 5px 5px 5px;
+      	-moz-border-radius: 5px 5px 5px 5px;
+      	-webkit-border-radius: 5px 5px 5px 5px;
+      	padding-top : 5px;
+      	font-size : 1.2em;
+      	line-height : 20px;
+      }
+      
+    </style>
+  </head>
+
+  <body onload="prettyPrint()">
+    <div class="topbar">
+      <div class="fill">
         <div class="container">
           <a class="brand" href="#">Noregress</a>
           <ul class="nav">
-            <li class="active"><a href="#overview">Overview</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
     </div>
 
-    <header class="jumbotron masthead" id="overview">
-      <div class="inner">
-        <div class="container">
-          <h1>Regression Tests For Web Performance</h1>
-          <p class="lead">
-            Noregress lets you write junit tests to verify your websites performance does not degreade over time.
-            <br />
-            <a href="https://github.com/sripathikrishnan/noregress#readme">Learn More &raquo;</a>
-          </p>
-        </div><!-- /container -->
+    <div class="container">
+      <div class="hero-unit">
+        <h1>Assert Web Performance</h1>
+        <p>Write JUnit style tests to assert your website's performance does not degrade.</p>
+        <p><a class="btn primary large">Learn more &raquo;</a></p>
       </div>
-    </header>
 
-</body>
+      <div class="row">
+        <div class="span10">
+          <h2>Example Code</h2>
+          <pre class="prettyprint"><code class="language-java">/*Test Github.com Home Page*/
+
+PageTester tester = new PageSpeedOnlineV1Service("&lt;INSERT-FREE-PAGE-SPEED-API-KEY&gt;");
+Result result = tester.testPage(new Request("http://github.com/"));
+
+//Basic Assertions
+assertEquals("Http Response Code", 200, result.getResponseCode());
+assertEquals("404's on page", 0, result.getBadRequests().size());
+assertTrue("Too many domains used on the page", result.getNumberHosts() < 6);
+
+//If somebody adds a new image or a new css/js file, these tests will catch them
+assertTrue("Too many resources on page", result.getNumberResources() < 35);
+assertTrue("Too many JS resources on page", result.getNumberJsResources() < 5);
+assertTrue("Too many CSS resources on page", result.getNumberCssResources() < 2);
+
+/*
+ * Github doesn't compress SVG files, when they should.
+ * But just to demonstrate the flexibility of Noregress, 
+ * we will ignore svg files as part of this test 
+ */
+List<URI> resourcesWithoutGzip = result.getResourcesWithoutCompression();
+List<URI> filteredResources = ignoreURIPatterns(resourcesWithoutGzip, "^.*svg$");
+assertTrue("GZip not enabled on some ", filteredResources.isEmpty());
+
+/*
+ * Several other assertions are possible. 
+ * Look at org.noregress.Result and org.noregress.pagespeed.PageSpeedResult
+*/</code></pre>
+        </div>
+        <div class="span6">
+          <h2>Features</h2>
+          <div class="key-features">
+          	<ul>
+          		<li>Based on <a href="http://code.google.com/apis/pagespeedonline/v1/getting_started.html">Page Speed Online</a></li>
+          		<li></li>
+          	</ul>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Company 2011</p>
+      </footer>
+    </div> <!-- /container -->
+
+  </body>
 </html>
-
